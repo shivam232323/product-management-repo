@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isAuthenticated">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Product Management</a>
+    <div class="navbar-nav">
+      <a class="nav-link" routerLink="/products" routerLinkActive="active">Products</a>
+      <a class="nav-link" routerLink="/categories" routerLinkActive="active">Categories</a>
+      <a class="nav-link" routerLink="/products/bulk-upload" routerLinkActive="active"
+        >Bulk Upload</a
+      >
+      <a class="nav-link" style="cursor: pointer" (click)="logout()">Logout</a>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

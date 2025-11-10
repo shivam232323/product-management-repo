@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>Bulk Upload Products</h3>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label">Upload CSV File</label>
+            <input
+              type="file"
+              class="form-control"
+              accept=".csv"
+              (change)="onFileSelected($event)"
+              [disabled]="uploading"
+            />
+            <small class="text-muted"> CSV format: name, price, categoryId, image </small>
+          </div>
+
+          <button
+            class="btn btn-primary me-2"
+            (click)="onUpload()"
+            [disabled]="!selectedFile || uploading"
+          >
+            {{ uploading ? 'Uploading...' : 'Upload' }}
+          </button>
+
+          <button class="btn btn-secondary" (click)="downloadSampleCSV()">
+            Download Sample CSV
+          </button>
+
+          <div *ngIf="uploadMessage" class="alert alert-info mt-3">
+            {{ uploadMessage }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3>Download Reports</h3>
+        </div>
+        <div class="card-body">
+          <p>Download all products in CSV or Excel format</p>
+          <button class="btn btn-success me-2" (click)="downloadReport('csv')">
+            <i class="bi bi-file-earmark-spreadsheet"></i> Download CSV
+          </button>
+          <button class="btn btn-success" (click)="downloadReport('xlsx')">
+            <i class="bi bi-file-earmark-excel"></i> Download Excel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
